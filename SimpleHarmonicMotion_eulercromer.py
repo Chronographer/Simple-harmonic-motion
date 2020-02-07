@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def euler():
+def eulercromer():
     gravity = 9.8
     pendulumLength = 1.0
 
@@ -25,9 +25,9 @@ def euler():
     timeTable = []
 
     while currentTime <= maxTime:
-        currentAlpha = (gravity*currentTheta)/pendulumLength
-        currentTheta = currentTheta + currentOmega*timeStep
-        currentOmega = currentOmega - currentAlpha*timeStep
+        currentAlpha = (gravity * currentTheta) / pendulumLength
+        currentOmega = currentOmega - currentAlpha * timeStep
+        currentTheta = currentTheta + currentOmega * timeStep
         currentTime = currentTime + timeStep
 
         alphaTable.append(currentAlpha)
@@ -35,5 +35,5 @@ def euler():
         thetaTable.append(currentTime)
         timeTable.append(currentTime)
 
-    plt.plot(timeTable, omegaTable, label="euler")
+    plt.plot(timeTable, omegaTable, label="eulerCromer")
     plt.grid(True)
