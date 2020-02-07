@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-gravity = -9.8
+gravity = 9.8
 pendulumLength = 1.0
 
 initialTheta = np.pi/4
@@ -23,8 +23,9 @@ alphaTable = []
 timeTable = []
 
 while currentTime <= maxTime:
-    print("time is: " + currentTime)
-    print("theta is: " + currentTheta)
+    print("time is: " + str(currentTime))
+    print("theta is: " + str(currentTheta))
+    print("omeaga is: " + str(currentOmega))
 
     currentAlpha = (gravity*currentTheta)/pendulumLength
     currentTheta = currentTheta + currentOmega*timeStep
@@ -36,5 +37,6 @@ while currentTime <= maxTime:
     thetaTable.append(currentTime)
     timeTable.append(currentTime)
 
-plt.plot(timeTable, )
+plt.plot(timeTable, omegaTable)
+plt.grid(True)
 plt.show()
