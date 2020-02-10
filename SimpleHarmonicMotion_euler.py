@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 
-def euler(gravity, pendulumLength, initialTheta, initialOmega, initialTime, timeStep, maxTime, mass):
+def euler(gravity, pendulumLength, initialTheta, initialOmega, initialTime, timeStep, maxTime, mass, plotType):
     currentTheta = initialTheta
     currentOmega = initialOmega
     currentTime = initialTime
@@ -29,4 +29,4 @@ def euler(gravity, pendulumLength, initialTheta, initialOmega, initialTime, time
         timeTable.append(currentTime)
         energyTable.append(currentEnergy)
 
-    plt.plot(timeTable, energyTable, label="euler")
+    plt.plot(timeTable, omegaTable, label="euler")

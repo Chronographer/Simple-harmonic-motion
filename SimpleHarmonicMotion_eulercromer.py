@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 
-def eulercromer(gravity, pendulumLength, initialTheta, initialOmega, initialTime, timeStep, maxTime, mass):
+def eulercromer(gravity, pendulumLength, initialTheta, initialOmega, initialTime, timeStep, maxTime, mass, plotType):
     currentTheta = initialTheta
     currentOmega = initialOmega
     currentTime = initialTime
@@ -11,6 +11,8 @@ def eulercromer(gravity, pendulumLength, initialTheta, initialOmega, initialTime
     alphaTable = []
     timeTable = []
     energyTable = []
+
+    plotTable = []
 
     initialEnergy = (0.5) * mass * pendulumLength**2 * (currentOmega**2 + (gravity / pendulumLength) * currentTheta**2)
     currentEnergy = initialEnergy
@@ -28,4 +30,15 @@ def eulercromer(gravity, pendulumLength, initialTheta, initialOmega, initialTime
         timeTable.append(currentTime)
         energyTable.append(currentEnergy)
 
-    plt.plot(timeTable, energyTable, label="eulerCromer")
+        if plotType == "energy":
+            plotTable.append(currentEnergy)
+        elif plotType == "angle":
+            plotTable.append(currentTheta)
+        elif plotType == "velocity":
+            plotTable.append(currentOmega)
+        elif plotType == "acceleration":
+            plotTable.append(currentAlpha)
+        else:
+            print(str(plotType) + " is not a valid plot type!")
+
+    plt.plot(timeTable, plotTable, label="eulerCromer")
