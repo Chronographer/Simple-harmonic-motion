@@ -19,4 +19,7 @@ SimpleHarmonicMotion_eulercromer.eulercromer(gravity, pendulumLength, initialThe
 
 plt.legend()
 plt.grid(True)
+plt.suptitle("SHM as computed using the Euler and Euler-Cromer methods")
+plt.xlabel("Time (sec)")
+plt.ylabel("Angular velocity (m/s)")
 plt.show()
