@@ -9,24 +9,26 @@ def euler(gravity, pendulumLength, initialTheta, initialOmega, initialTime, time
     initialEnergy = (0.5) * mass * pendulumLength**2 * (currentOmega**2 + (gravity / pendulumLength) * currentTheta**2)
     currentEnergy = initialEnergy
 
-    thetaTable = []
-    omegaTable = []
-    alphaTable = []
+    plotTable = []
     timeTable = []
-    energyTable = []
 
     while currentTime <= maxTime:
         currentAlpha = (gravity * currentTheta) / pendulumLength
         currentTheta = currentTheta + currentOmega * timeStep
         currentOmega = currentOmega - currentAlpha * timeStep
-        currentEnergy = currentEnergy + (0.5) * ((mass * pendulumLength * (currentOmega**2 + (gravity / pendulumLength) * currentTheta**2))) * (timeStep)**2
+        currentEnergy = currentEnergy + (0.5) * ((mass * pendulumLength * (currentOmega**2 + (gravity / pendulumLength) * currentTheta**2))) * (timeStep)**2 # This MIGHT currently be incorrect.
         currentTime = currentTime + timeStep
 
-
-        alphaTable.append(currentAlpha)
-        omegaTable.append(currentOmega)
-        thetaTable.append(currentTime)
         timeTable.append(currentTime)
-        energyTable.append(currentEnergy)
+        if plotType == "energy":
+            plotTable.append(currentEnergy)
+        elif plotType == "angle":
+            plotTable.append(currentTheta)
+        elif plotType == "velocity":
+            plotTable.append(currentOmega)
+        elif plotType == "acceleration":
+            plotTable.append(currentAlpha)
+        else:
+            exit("Error: '" + str(plotType) + "' is not a valid plot type!")
 
-    plt.plot(timeTable, omegaTable, label="euler")
+    plt.plot(timeTable, plotTable, label="Euler: " + plotType)
