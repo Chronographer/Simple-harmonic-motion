@@ -16,7 +16,7 @@ def euler(gravity, pendulumLength, initialTheta, initialOmega, initialTime, time
         currentAlpha = (gravity * currentTheta) / pendulumLength
         currentTheta = currentTheta + currentOmega * timeStep
         currentOmega = currentOmega - currentAlpha * timeStep
-        currentEnergy = currentEnergy + (0.5) * ((mass * pendulumLength * (currentOmega**2 + (gravity / pendulumLength) * currentTheta**2))) * (timeStep)**2 # This MIGHT currently be incorrect.
+        currentEnergy = 0.5 * mass * pendulumLength**2 * currentOmega**2 + 0.5 * mass * gravity * pendulumLength * currentTheta**2
         currentTime = currentTime + timeStep
 
         timeTable.append(currentTime)
