@@ -13,16 +13,23 @@ maxTime = 20.0
 gravity = 9.8
 pendulumLength = 2.0
 mass = 2
-plotType = "energy"
+plotType = "phaseSpace"
 
 if plotType == "energy":
+    xAxisLabel = "Time (sec)"
     yAxisLabel = "Energy"
 elif plotType == "angle":
+    xAxisLabel = "Time (sec)"
     yAxisLabel = "Angle (radians)"
 elif plotType == "velocity":
+    xAxisLabel = "Time (sec)"
     yAxisLabel = "Velocity (m/s)"
 elif plotType == "acceleration":
+    xAxisLabel = "Time (sec)"
     yAxisLabel = "Acceleration (m/s^2)"
+elif plotType == "phaseSpace":
+    xAxisLabel = "Velocity (m/s)"
+    yAxisLabel = "Angle (radians)"
 
 SimpleHarmonicMotion_euler.euler(gravity, pendulumLength, initialTheta, initialOmega, initialTime, timeStep, maxTime, mass, plotType)
 SimpleHarmonicMotion_eulercromer.eulercromer(gravity, pendulumLength, initialTheta, initialOmega, initialTime, timeStep, maxTime, mass, plotType)
@@ -30,6 +37,6 @@ SimpleHarmonicMotion_eulercromer.eulercromer(gravity, pendulumLength, initialThe
 plt.legend(loc="upper right")
 plt.grid(True)
 plt.suptitle("SHM as computed using the Euler and Euler-Cromer methods")
-plt.xlabel("Time (sec)")
+plt.xlabel(xAxisLabel)
 plt.ylabel(yAxisLabel)
 plt.show()
