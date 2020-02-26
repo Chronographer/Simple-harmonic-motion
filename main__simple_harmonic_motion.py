@@ -3,19 +3,19 @@ import SimpleHarmonicMotion_eulercromer
 import matplotlib.pyplot as plt
 import numpy as np
 
-initialTheta = np.pi / 4
-initialOmega = 0.0
-initialAlpha = 0.0
-initialTime = 0.0
-
-timeStep = 0.1
-maxTime = 20.0
+timeStep = 0.01
+maxTime = 40.0
 gravity = 9.8
 pendulumLength = 2.0
 mass = 2
-plotType = "phaseSpace"
+plotType = "phaseSpace"  # this tells the program which kind of plot it should make. It accepts 'energy', 'angle', 'velocity', 'acceleration', and 'phaseSpace'
 
-if plotType == "energy":
+initialTheta = np.pi / 4
+initialOmega = np.sqrt(gravity/pendulumLength)
+initialAlpha = 0.0
+initialTime = 0.0
+
+if plotType == "energy":  # this automatically sets the x and y axis labels to the appropriate values based on what you are plotting.
     xAxisLabel = "Time (sec)"
     yAxisLabel = "Energy"
 elif plotType == "angle":
@@ -35,7 +35,7 @@ SimpleHarmonicMotion_euler.euler(gravity, pendulumLength, initialTheta, initialO
 SimpleHarmonicMotion_eulercromer.eulercromer(gravity, pendulumLength, initialTheta, initialOmega, initialTime, timeStep, maxTime, mass, plotType)
 
 plt.legend(loc="upper right")
-plt.grid(True)
+plt.grid()
 plt.suptitle("SHM as computed using the Euler and Euler-Cromer methods")
 plt.xlabel(xAxisLabel)
 plt.ylabel(yAxisLabel)
